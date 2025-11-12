@@ -4,110 +4,695 @@
   <meta charset="UTF-8" />
   <title>Patrick Strand | Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    :root {
+      --bg-primary: #020817;
+      --bg-secondary: #111827;
+      --text-primary: #e5e7eb;
+      --text-secondary: #9ca3af;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+    }
+
+    * {
       margin: 0;
       padding: 0;
-      background: #020817;
-      color: #e5e7eb;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
       line-height: 1.6;
     }
+
     .wrap {
-      max-width: 900px;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 32px 16px 48px;
     }
-    header { margin-bottom: 32px; }
+
+    header { 
+      margin-bottom: 32px; 
+      text-align: center;
+    }
+
+    .profile-header {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-bottom: 24px;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    @media (min-width: 768px) {
+      .profile-header {
+        flex-direction: row;
+        text-align: left;
+      }
+    }
+
+    .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 3px solid var(--accent);
+      object-fit: cover;
+    }
+
     h1 {
-      font-size: 2.2rem;
+      font-size: 2.5rem;
       margin: 0 0 6px;
+      background: linear-gradient(135deg, var(--accent), #a78bfa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
+
     h2 {
-      font-size: 1.3rem;
-      margin-top: 28px;
-      padding-bottom: 4px;
-      border-bottom: 1px solid #111827;
+      font-size: 1.5rem;
+      margin-top: 32px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--bg-secondary);
     }
+
     a {
-      color: #38bdf8;
+      color: var(--accent);
       text-decoration: none;
+      transition: color 0.3s ease;
     }
-    a:hover { text-decoration: underline; }
+
+    a:hover { 
+      color: var(--accent-hover);
+      text-decoration: underline;
+    }
+
     .meta {
-      font-size: 0.9rem;
-      color: #9ca3af;
-      margin-top: 4px;
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-top: 8px;
     }
+
     .tagline {
-      color: #9ca3af;
-      font-size: 0.96rem;
-      max-width: 650px;
-      margin-top: 10px;
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin: 16px auto;
+      text-align: center;
     }
+
+    .social-links {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      margin: 16px 0;
+      flex-wrap: wrap;
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      background: var(--bg-secondary);
+      border-radius: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+      background: var(--accent);
+      color: var(--bg-primary);
+      text-decoration: none;
+      transform: translateY(-2px);
+    }
+
+    /* Skills Section */
+    .skills-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .skill-category {
+      background: var(--bg-secondary);
+      padding: 20px;
+      border-radius: 12px;
+      border-left: 4px solid var(--accent);
+    }
+
+    .skill-category h3 {
+      margin-bottom: 12px;
+      color: var(--accent);
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill-tag {
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--accent);
+      padding: 4px 12px;
+      border-radius: 16px;
+      font-size: 0.85rem;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    /* Projects Section */
+    .filters {
+      display: flex;
+      gap: 12px;
+      margin: 20px 0;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .filter-btn {
+      padding: 8px 16px;
+      background: var(--bg-secondary);
+      border: 1px solid #374151;
+      border-radius: 20px;
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover {
+      background: var(--accent);
+      color: var(--bg-primary);
+    }
+
     .projects {
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 14px;
-      margin-top: 10px;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
     }
+
     .project {
-      padding: 12px 12px 9px;
-      border-radius: 8px;
-      background: #020817;
-      border: 1px solid #111827;
+      padding: 20px;
+      border-radius: 12px;
+      background: var(--bg-secondary);
+      border: 1px solid #1f2937;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
     }
+
+    .project:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: between;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+
     .project-title {
       font-weight: 600;
-      margin-bottom: 2px;
+      font-size: 1.1rem;
+      margin-bottom: 4px;
+      flex: 1;
     }
+
+    .project-links {
+      display: flex;
+      gap: 8px;
+    }
+
+    .project-link {
+      padding: 4px 8px;
+      background: rgba(56, 189, 248, 0.1);
+      border-radius: 6px;
+      font-size: 0.8rem;
+    }
+
+    .project-description {
+      flex: 1;
+      margin-bottom: 12px;
+      color: var(--text-secondary);
+    }
+
     .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: auto;
+    }
+
+    .tech-tag {
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--accent);
+      padding: 2px 8px;
+      border-radius: 12px;
       font-size: 0.75rem;
-      color: #9ca3af;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin-top: 2px;
+      letter-spacing: 0.05em;
     }
+
+    .loading {
+      text-align: center;
+      padding: 40px;
+      color: var(--text-secondary);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin: 24px 0;
+    }
+
+    .stat-card {
+      background: var(--bg-secondary);
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      border-top: 4px solid var(--accent);
+    }
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--accent);
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-top: 4px;
+    }
+
     .footer {
-      margin-top: 32px;
-      font-size: 0.78rem;
-      color: #6b7280;
+      margin-top: 48px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      padding-top: 24px;
+      border-top: 1px solid var(--bg-secondary);
     }
-    @media (min-width: 720px) {
-      .projects {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
+
+    .education {
+      background: var(--bg-secondary);
+      padding: 20px;
+      border-radius: 12px;
+      margin: 20px 0;
+    }
+
+    .education-item {
+      margin-bottom: 16px;
+    }
+
+    .education-item:last-child {
+      margin-bottom: 0;
     }
   </style>
 </head>
 <body>
   <div class="wrap">
     <header>
-      <h1>Patrick Strand</h1>
-      <div class="meta">
-        Cork, Ireland · Computer Science Student<br/>
-        <a href="mailto:paddystrand+github@gmail.com">paddystrand+github@gmail.com</a> ·
-        <a href="https://github.com/paddystrand-ops" target="_blank">GitHub</a>
+      <div class="profile-header">
+        <img src="https://avatars.githubusercontent.com/u/your-github-id" alt="Patrick Strand" class="avatar" id="avatar">
+        <div>
+          <h1>Patrick Strand</h1>
+          <div class="meta">
+            <div><i class="fas fa-map-marker-alt"></i> Cork, Ireland</div>
+            <div><i class="fas fa-graduation-cap"></i> Computer Science Student</div>
+            <div><i class="fas fa-envelope"></i> <a href="mailto:paddystrand+github@gmail.com">paddystrand+github@gmail.com</a></div>
+          </div>
+        </div>
       </div>
+
+      <div class="social-links">
+        <a href="https://github.com/paddystrand-ops" target="_blank" class="social-link">
+          <i class="fab fa-github"></i> GitHub
+        </a>
+        <a href="https://linkedin.com/in/yourprofile" target="_blank" class="social-link">
+          <i class="fab fa-linkedin"></i> LinkedIn
+        </a>
+        <a href="https://twitter.com/yourprofile" target="_blank" class="social-link">
+          <i class="fab fa-twitter"></i> Twitter
+        </a>
+        <a href="https://your-blog.com" target="_blank" class="social-link">
+          <i class="fas fa-blog"></i> Blog
+        </a>
+      </div>
+
       <p class="tagline">
-        I’m a Computer Science student with a strong interest in systems, networking,
-        security, and real-world infrastructure. This portfolio highlights selected academic
-        and personal work, focused on clarity, reliability, and practical problem-solving.
+        I'm a Computer Science student passionate about systems, networking, security, and infrastructure. 
+        I build practical solutions with clean code and focus on real-world impact. Always learning, always building.
       </p>
     </header>
 
-    <section>
-      <h2>Selected Projects</h2>
-      <div class="projects">
+    <!-- Stats Section -->
+    <section id="stats-section" style="display: none;">
+      <h2>GitHub Stats</h2>
+      <div class="stats" id="stats-container">
+        <!-- Dynamic stats will be loaded here -->
+      </div>
+    </section>
 
-        <!-- Agile Project -->
-        <div class="project">
-          <div class="project-title">Global Health Indicators Dashboard (AgileProject)</div>
-          <p>
-            Team-based Agile project analysing real-world health indicator data and presenting it
-            through an interactive web interface. I contributed to data handling, interface logic,
-            and ensuring the solution aligned with Agile practices and documentation standards.
-          </p>
-          <div class="project-tech">Agile · Data Analysis · Web · Collaboration</div>
-          <a href="https://github.com/EditaBuneviciene/AgileProject" target="_blank">View project</a>
-        </
+    <!-- Skills Section -->
+    <section>
+      <h2>Skills & Technologies</h2>
+      <div class="skills-container">
+        <div class="skill-category">
+          <h3>Languages</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">TypeScript</span>
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">C/C++</span>
+            <span class="skill-tag">Go</span>
+            <span class="skill-tag">Rust</span>
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">Bash</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3>Frameworks & Libraries</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">React</span>
+            <span class="skill-tag">Node.js</span>
+            <span class="skill-tag">Express</span>
+            <span class="skill-tag">Django</span>
+            <span class="skill-tag">Flask</span>
+            <span class="skill-tag">Spring Boot</span>
+            <span class="skill-tag">TensorFlow</span>
+            <span class="skill-tag">PyTorch</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3>Tools & Platforms</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">Kubernetes</span>
+            <span class="skill-tag">AWS</span>
+            <span class="skill-tag">Git</span>
+            <span class="skill-tag">Linux</span>
+            <span class="skill-tag">MySQL</span>
+            <span class="skill-tag">MongoDB</span>
+            <span class="skill-tag">Redis</span>
+            <span class="skill-tag">Nginx</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3>Domains</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Systems Programming</span>
+            <span class="skill-tag">Networking</span>
+            <span class="skill-tag">Security</span>
+            <span class="skill-tag">DevOps</span>
+            <span class="skill-tag">Machine Learning</span>
+            <span class="skill-tag">Web Development</span>
+            <span class="skill-tag">Database Design</span>
+            <span class="skill-tag">Cloud Infrastructure</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education Section -->
+    <section>
+      <h2>Education</h2>
+      <div class="education">
+        <div class="education-item">
+          <h3>Bachelor of Science in Computer Science</h3>
+          <p class="meta">University College Cork | Expected 2025</p>
+          <p>Relevant coursework: Algorithms & Data Structures, Computer Networks, Operating Systems, 
+             Database Systems, Software Engineering, Cybersecurity, Machine Learning</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section>
+      <h2>Projects</h2>
+      <div class="filters" id="filters">
+        <button class="filter-btn active" data-filter="all">All Projects</button>
+        <button class="filter-btn" data-filter="featured">Featured</button>
+        <button class="filter-btn" data-filter="python">Python</button>
+        <button class="filter-btn" data-filter="javascript">JavaScript</button>
+        <button class="filter-btn" data-filter="java">Java</button>
+        <button class="filter-btn" data-filter="go">Go</button>
+        <button class="filter-btn" data-filter="rust">Rust</button>
+        <button class="filter-btn" data-filter="web">Web</button>
+        <button class="filter-btn" data-filter="systems">Systems</button>
+        <button class="filter-btn" data-filter="security">Security</button>
+      </div>
+
+      <div class="projects" id="projects-container">
+        <div class="loading">
+          <i class="fas fa-spinner fa-spin"></i> Loading projects from GitHub...
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>Built with ❤️ using HTML, CSS, and JavaScript | Last updated: <span id="current-year"></span></p>
+      <p>Projects automatically synced from <a href="https://github.com/paddystrand-ops">GitHub</a></p>
+    </footer>
+  </div>
+
+  <script>
+    // Configuration
+    const GITHUB_USERNAME = 'paddystrand-ops';
+    const FEATURED_PROJECTS = ['AgileProject', 'your-featured-repo']; // Add your featured repo names
+
+    // DOM Elements
+    const projectsContainer = document.getElementById('projects-container');
+    const filtersContainer = document.getElementById('filters');
+    const statsContainer = document.getElementById('stats-container');
+    const statsSection = document.getElementById('stats-section');
+    const avatar = document.getElementById('avatar');
+
+    // Set current year
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    // Set avatar
+    avatar.src = `https://avatars.githubusercontent.com/${GITHUB_USERNAME}`;
+
+    // Language to technology mapping
+    const languageTechMap = {
+      'python': ['Python', 'Django', 'Flask'],
+      'javascript': ['JavaScript', 'TypeScript', 'Node.js', 'React'],
+      'typescript': ['TypeScript', 'Node.js'],
+      'java': ['Java', 'Spring Boot'],
+      'go': ['Go'],
+      'rust': ['Rust'],
+      'cpp': ['C++'],
+      'c': ['C'],
+      'html': ['HTML', 'CSS'],
+      'css': ['CSS'],
+      'shell': ['Bash', 'Shell'],
+      'dockerfile': ['Docker'],
+    };
+
+    // Detect project categories based on name, description, and languages
+    function detectCategories(repo, languages) {
+      const categories = new Set();
+      const repoName = repo.name.toLowerCase();
+      const description = repo.description?.toLowerCase() || '';
+      
+      // Language-based categories
+      if (languages.python) categories.add('python');
+      if (languages.javascript) categories.add('javascript');
+      if (languages.typescript) categories.add('typescript');
+      if (languages.java) categories.add('java');
+      if (languages.go) categories.add('go');
+      if (languages.rust) categories.add('rust');
+      
+      // Domain-based categories
+      if (repoName.includes('web') || description.includes('web') || 
+          languages.html || languages.css || languages.javascript) {
+        categories.add('web');
+      }
+      
+      if (repoName.includes('system') || repoName.includes('kernel') || 
+          repoName.includes('os') || languages.c || languages.cpp || languages.rust) {
+        categories.add('systems');
+      }
+      
+      if (repoName.includes('security') || repoName.includes('crypto') || 
+          repoName.includes('secure') || description.includes('security')) {
+        categories.add('security');
+      }
+      
+      if (FEATURED_PROJECTS.includes(repo.name)) {
+        categories.add('featured');
+      }
+      
+      return Array.from(categories);
+    }
+
+    // Get tech stack from languages
+    function getTechStack(languages) {
+      const techStack = new Set();
+      
+      Object.entries(languages).forEach(([lang, bytes]) => {
+        if (languageTechMap[lang.toLowerCase()]) {
+          languageTechMap[lang.toLowerCase()].forEach(tech => techStack.add(tech));
+        } else {
+          techStack.add(lang);
+        }
+      });
+      
+      return Array.from(techStack).slice(0, 6); // Limit to 6 technologies
+    }
+
+    // Create project card
+    function createProjectCard(repo, languages) {
+      const categories = detectCategories(repo, languages);
+      const techStack = getTechStack(languages);
+      
+      return `
+        <div class="project" data-categories="${categories.join(',')}">
+          <div class="project-header">
+            <div class="project-title">${repo.name}</div>
+            <div class="project-links">
+              ${repo.homepage ? `<a href="${repo.homepage}" class="project-link" target="_blank"><i class="fas fa-external-link-alt"></i> Demo</a>` : ''}
+              <a href="${repo.html_url}" class="project-link" target="_blank"><i class="fab fa-github"></i> Code</a>
+            </div>
+          </div>
+          <p class="project-description">${repo.description || 'No description provided.'}</p>
+          <div class="project-tech">
+            ${techStack.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+          </div>
+          <div class="meta" style="margin-top: 12px;">
+            <small>Updated: ${new Date(repo.updated_at).toLocaleDateString()} | 
+            Stars: ${repo.stargazers_count} | Forks: ${repo.forks_count}</small>
+          </div>
+        </div>
+      `;
+    }
+
+    // Filter projects
+    function filterProjects(filter) {
+      const projects = document.querySelectorAll('.project');
+      projects.forEach(project => {
+        const categories = project.getAttribute('data-categories').split(',');
+        if (filter === 'all' || categories.includes(filter)) {
+          project.style.display = 'flex';
+        } else {
+          project.style.display = 'none';
+        }
+      });
+    }
+
+    // Load projects from GitHub
+    async function loadProjects() {
+      try {
+        const response = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=100`);
+        const repos = await response.json();
+
+        if (!Array.isArray(repos)) {
+          throw new Error('Failed to fetch repositories');
+        }
+
+        // Get languages for each repo
+        const reposWithLanguages = await Promise.all(
+          repos.map(async repo => {
+            if (repo.fork) return null; // Skip forks
+            
+            try {
+              const langResponse = await fetch(repo.languages_url);
+              const languages = await langResponse.json();
+              return { repo, languages };
+            } catch (error) {
+              console.error(`Error fetching languages for ${repo.name}:`, error);
+              return { repo, languages: {} };
+            }
+          })
+        );
+
+        // Filter out null values and sort by stars and update date
+        const validRepos = reposWithLanguages
+          .filter(item => item !== null)
+          .sort((a, b) => {
+            // Sort by stars (descending), then by update date (descending)
+            if (b.repo.stargazers_count !== a.repo.stargazers_count) {
+              return b.repo.stargazers_count - a.repo.stargazers_count;
+            }
+            return new Date(b.repo.updated_at) - new Date(a.repo.updated_at);
+          });
+
+        // Display projects
+        projectsContainer.innerHTML = validRepos
+          .map(({ repo, languages }) => createProjectCard(repo, languages))
+          .join('');
+
+        // Add filter functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        filterButtons.forEach(btn => {
+          btn.addEventListener('click', () => {
+            filterButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            filterProjects(btn.dataset.filter);
+          });
+        });
+
+        // Load stats
+        await loadStats();
+
+      } catch (error) {
+        console.error('Error loading projects:', error);
+        projectsContainer.innerHTML = `
+          <div class="loading">
+            <i class="fas fa-exclamation-triangle"></i> 
+            Failed to load projects. Please check your GitHub username and try again.
+          </div>
+        `;
+      }
+    }
+
+    // Load GitHub stats
+    async function loadStats() {
+      try {
+        const response = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}`);
+        const userData = await response.json();
+        
+        statsContainer.innerHTML = `
+          <div class="stat-card">
+            <div class="stat-number">${userData.public_repos}</div>
+            <div class="stat-label">Public Repositories</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">${userData.followers}</div>
+            <div class="stat-label">GitHub Followers</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">${userData.following}</div>
+            <div class="stat-label">Following</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">${new Date(userData.created_at).getFullYear()}</div>
+            <div class="stat-label">GitHub Member Since</div>
+          </div>
+        `;
+        
+        statsSection.style.display = 'block';
+      } catch (error) {
+        console.error('Error loading stats:', error);
+      }
+    }
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', loadProjects);
+  </script>
+</body>
+</html>

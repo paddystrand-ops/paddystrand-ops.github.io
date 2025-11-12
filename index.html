@@ -358,7 +358,7 @@
   <div class="wrap">
     <header>
       <div class="profile-header">
-        <img src="https://avatars.githubusercontent.com/u/150228030?v=4" alt="Patrick Strand" class="avatar" id="avatar">
+        <img src="" alt="Patrick Strand" class="avatar" id="avatar">
         <div>
           <h1>Patrick Strand</h1>
           <div class="meta">
@@ -479,8 +479,9 @@
     const avatar = document.getElementById('avatar');
     const skillsContainer = document.getElementById('skills-container');
 
-    // Set current year
+    // Set current year and avatar
     document.getElementById('current-year').textContent = new Date().getFullYear();
+    avatar.src = `https://avatars.githubusercontent.com/${GITHUB_USERNAME}`;
 
     // Language to technology mapping
     const languageTechMap = {

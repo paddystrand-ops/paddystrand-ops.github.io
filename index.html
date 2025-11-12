@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Patrick Strand | Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #020817;
+      color: #e5e7eb;
+      line-height: 1.6;
+    }
+    .wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 32px 16px 48px;
+    }
+    header { margin-bottom: 32px; }
+    h1 {
+      font-size: 2.2rem;
+      margin: 0 0 6px;
+    }
+    h2 {
+      font-size: 1.3rem;
+      margin-top: 28px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid #111827;
+    }
+    a {
+      color: #38bdf8;
+      text-decoration: none;
+    }
+    a:hover { text-decoration: underline; }
+    .meta {
+      font-size: 0.9rem;
+      color: #9ca3af;
+      margin-top: 4px;
+    }
+    .tagline {
+      color: #9ca3af;
+      font-size: 0.96rem;
+      max-width: 650px;
+      margin-top: 10px;
+    }
+    .projects {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-top: 10px;
+    }
+    .project {
+      padding: 12px 12px 9px;
+      border-radius: 8px;
+      background: #020817;
+      border: 1px solid #111827;
+    }
+    .project-title {
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+    .project-tech {
+      font-size: 0.75rem;
+      color: #9ca3af;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-top: 2px;
+    }
+    .footer {
+      margin-top: 32px;
+      font-size: 0.78rem;
+      color: #6b7280;
+    }
+    @media (min-width: 720px) {
+      .projects {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Patrick Strand</h1>
+      <div class="meta">
+        Cork, Ireland · Computer Science Student<br/>
+        <a href="mailto:YOUR.EMAIL@HERE">YOUR.EMAIL@HERE</a> ·
+        <a href="https://github.com/paddystrand-ops" target="_blank">GitHub</a>
+      </div>
+      <p class="tagline">
+        I’m a Computer Science student with a strong interest in systems, networking,
+        security, and real-world infrastructure. Below is a selection of academic and
+        personal projects that show how I design, implement, and document solutions.
+      </p>
+    </header>
+
+    <section>
+      <h2>Selected Projects</h2>
+      <div class="projects">
+        <div class="project">
+          <div class="project-title">[Project 1 – e.g. OS Scheduler Simulator]</div>
+          <p>Short, human description of what it does and why it exists.</p>
+          <div class="project-tech">Python · Algorithms · Operating Systems</div>
+          <a href="https://github.com/paddystrand-ops/REPO_NAME" target="_blank">View code</a>
+        </div>
+
+        <div class="project">
+          <div class="project-title">[Project 2 – e.g. Client-Server Chat App]</div>
+          <p>Briefly: problem → how you solved it → what you learned.</p>
+          <div class="project-tech">C / Python · Sockets · Networking</div>
+          <a href="https://github.com/paddystrand-ops/REPO_NAME" target="_blank">View code</a>
+        </div>
+
+        <div class="project">
+          <div class="project-title">[Project 3 – Web / Security / Data]</div>
+          <p>One or two lines focused on something relevant to roles you want.</p>
+          <div class="project-tech">Tech stack here</div>
+          <a href="https://github.com/paddystrand-ops/REPO_NAME" target="_blank">View code</a>
+        </div>
+
+        <div class="project">
+          <div class="project-title">Site-4 Home Lab Design</div>
+          <p>High-availability home lab & network design: VLANs, UniFi stack,
+             backups, virtualization, security baselines – documented like a real deployment.</p>
+          <div class="project-tech">Networking · Virtualization · Documentation</div>
+          <a href="https://github.com/paddystrand-ops" target="_blank">See related work</a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Skills</h2>
+      <p>
+        <strong>Languages:</strong> (List what you’ve actually used: Python, C, Java, etc.)<br/>
+        <strong>Tools:</strong> Git, Linux, VS Code, Docker (if applicable), basic web stack<br/>
+        <strong>Areas:</strong> Systems, networking, security, automation, infrastructure.
+      </p>
+    </section>
+
+    <section>
+      <h2>Contact</h2>
+      <p>
+        For roles, internships, or collaboration, email me at
+        <a href="mailto:paddystrand+github@gmail.com">YOUR.EMAIL@HERE</a>.
+      </p>
+    </section>
+
+    <div class="footer">
+      Last updated: November 2025
+    </div>
+  </div>
+</body>
+</html>

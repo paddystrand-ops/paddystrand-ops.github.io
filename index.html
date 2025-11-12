@@ -45,7 +45,6 @@
       gap: 24px;
       margin-bottom: 24px;
       flex-direction: column;
-      text-align: center;
     }
 
     @media (min-width: 768px) {
@@ -129,11 +128,18 @@
     }
 
     /* Skills Section */
-    .skills-container {
+    .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 20px;
       margin-top: 20px;
+    }
+
+    .skills-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 16px;
+      margin: 24px 0;
     }
 
     .skill-category {
@@ -146,6 +152,9 @@
     .skill-category h3 {
       margin-bottom: 12px;
       color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
     .skill-tags {
@@ -155,12 +164,28 @@
     }
 
     .skill-tag {
-      background: rgba(56, 189, 248, 0.1);
       color: var(--accent);
       padding: 4px 12px;
       border-radius: 16px;
       font-size: 0.85rem;
       border: 1px solid rgba(56, 189, 248, 0.3);
+      transition: transform 0.2s ease;
+    }
+
+    .skill-tag:hover {
+      transform: translateY(-2px);
+    }
+
+    /* Education Section */
+    .education {
+      background: var(--bg-secondary);
+      padding: 20px;
+      border-radius: 12px;
+      margin: 20px 0;
+    }
+
+    .education-item {
+      margin-bottom: 16px;
     }
 
     /* Projects Section */
@@ -214,7 +239,7 @@
 
     .project-header {
       display: flex;
-      justify-content: between;
+      justify-content: space-between;
       align-items: flex-start;
       margin-bottom: 12px;
     }
@@ -261,6 +286,16 @@
       letter-spacing: 0.05em;
     }
 
+    .contribution-badge {
+      background: linear-gradient(135deg, #8b5cf6, #ec4899);
+      color: white;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 0.7rem;
+      margin-left: 8px;
+      font-weight: 600;
+    }
+
     .loading {
       text-align: center;
       padding: 40px;
@@ -303,19 +338,19 @@
       border-top: 1px solid var(--bg-secondary);
     }
 
-    .education {
-      background: var(--bg-secondary);
-      padding: 20px;
-      border-radius: 12px;
-      margin: 20px 0;
-    }
-
-    .education-item {
-      margin-bottom: 16px;
-    }
-
-    .education-item:last-child {
-      margin-bottom: 0;
+    @media (max-width: 768px) {
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .project-header {
+        flex-direction: column;
+        gap: 8px;
+      }
+      
+      .project-links {
+        align-self: flex-start;
+      }
     }
   </style>
 </head>
@@ -323,7 +358,7 @@
   <div class="wrap">
     <header>
       <div class="profile-header">
-        <img src="https://avatars.githubusercontent.com/u/your-github-id" alt="Patrick Strand" class="avatar" id="avatar">
+        <img src="https://avatars.githubusercontent.com/u/150228030?v=4" alt="Patrick Strand" class="avatar" id="avatar">
         <div>
           <h1>Patrick Strand</h1>
           <div class="meta">
@@ -338,14 +373,11 @@
         <a href="https://github.com/paddystrand-ops" target="_blank" class="social-link">
           <i class="fab fa-github"></i> GitHub
         </a>
-        <a href="https://linkedin.com/in/yourprofile" target="_blank" class="social-link">
+        <a href="https://linkedin.com/in/patrick-strand" target="_blank" class="social-link">
           <i class="fab fa-linkedin"></i> LinkedIn
         </a>
-        <a href="https://twitter.com/yourprofile" target="_blank" class="social-link">
-          <i class="fab fa-twitter"></i> Twitter
-        </a>
-        <a href="https://your-blog.com" target="_blank" class="social-link">
-          <i class="fas fa-blog"></i> Blog
+        <a href="https://paddystrand-ops.github.io" target="_blank" class="social-link">
+          <i class="fas fa-globe"></i> Portfolio
         </a>
       </div>
 
@@ -366,63 +398,9 @@
     <!-- Skills Section -->
     <section>
       <h2>Skills & Technologies</h2>
-      <div class="skills-container">
-        <div class="skill-category">
-          <h3>Languages</h3>
-          <div class="skill-tags">
-            <span class="skill-tag">Python</span>
-            <span class="skill-tag">JavaScript</span>
-            <span class="skill-tag">TypeScript</span>
-            <span class="skill-tag">Java</span>
-            <span class="skill-tag">C/C++</span>
-            <span class="skill-tag">Go</span>
-            <span class="skill-tag">Rust</span>
-            <span class="skill-tag">SQL</span>
-            <span class="skill-tag">Bash</span>
-          </div>
-        </div>
-
-        <div class="skill-category">
-          <h3>Frameworks & Libraries</h3>
-          <div class="skill-tags">
-            <span class="skill-tag">React</span>
-            <span class="skill-tag">Node.js</span>
-            <span class="skill-tag">Express</span>
-            <span class="skill-tag">Django</span>
-            <span class="skill-tag">Flask</span>
-            <span class="skill-tag">Spring Boot</span>
-            <span class="skill-tag">TensorFlow</span>
-            <span class="skill-tag">PyTorch</span>
-          </div>
-        </div>
-
-        <div class="skill-category">
-          <h3>Tools & Platforms</h3>
-          <div class="skill-tags">
-            <span class="skill-tag">Docker</span>
-            <span class="skill-tag">Kubernetes</span>
-            <span class="skill-tag">AWS</span>
-            <span class="skill-tag">Git</span>
-            <span class="skill-tag">Linux</span>
-            <span class="skill-tag">MySQL</span>
-            <span class="skill-tag">MongoDB</span>
-            <span class="skill-tag">Redis</span>
-            <span class="skill-tag">Nginx</span>
-          </div>
-        </div>
-
-        <div class="skill-category">
-          <h3>Domains</h3>
-          <div class="skill-tags">
-            <span class="skill-tag">Systems Programming</span>
-            <span class="skill-tag">Networking</span>
-            <span class="skill-tag">Security</span>
-            <span class="skill-tag">DevOps</span>
-            <span class="skill-tag">Machine Learning</span>
-            <span class="skill-tag">Web Development</span>
-            <span class="skill-tag">Database Design</span>
-            <span class="skill-tag">Cloud Infrastructure</span>
-          </div>
+      <div class="skills-container" id="skills-container">
+        <div class="loading">
+          <i class="fas fa-spinner fa-spin"></i> Detecting skills from GitHub projects...
         </div>
       </div>
     </section>
@@ -432,10 +410,12 @@
       <h2>Education</h2>
       <div class="education">
         <div class="education-item">
-          <h3>Bachelor of Science in Computer Science</h3>
-          <p class="meta">University College Cork | Expected 2025</p>
-          <p>Relevant coursework: Algorithms & Data Structures, Computer Networks, Operating Systems, 
-             Database Systems, Software Engineering, Cybersecurity, Machine Learning</p>
+          <h3>Bachelor of Science (Honours) in Software Development</h3>
+          <p class="meta">Munster Technological University Cork, Ireland | Expected 2025</p>
+          <p>Relevant coursework: Computer Architecture, Computer Security Principles, Programming Fundamentals, 
+             Web Development, Database Design, Data Structures & Algorithms, Object Oriented Programming, 
+             Operating Systems, Networking Fundamentals, Agile Processes, Distributed Systems, 
+             Machine Learning, Big Data & Analytics</p>
         </div>
       </div>
     </section>
@@ -472,7 +452,24 @@
   <script>
     // Configuration
     const GITHUB_USERNAME = 'paddystrand-ops';
-    const FEATURED_PROJECTS = ['AgileProject', 'your-featured-repo']; // Add your featured repo names
+    const FEATURED_PROJECTS = ['AgileProject'];
+    
+    // Manual list of contributed projects
+    const CONTRIBUTED_PROJECTS = [
+      {
+        name: 'AgileProject',
+        full_name: 'EditaBuneviciene/AgileProject',
+        html_url: 'https://github.com/EditaBuneviciene/AgileProject',
+        description: 'Team-based Agile project analysing real-world health indicator data and presenting it through an interactive web interface. I contributed to data handling, interface logic, and ensuring the solution aligned with Agile practices.',
+        languages_url: 'https://api.github.com/repos/EditaBuneviciene/AgileProject/languages',
+        stargazers_count: 0,
+        forks_count: 0,
+        updated_at: new Date().toISOString(),
+        homepage: null,
+        fork: false,
+        is_contributed: true
+      }
+    ];
 
     // DOM Elements
     const projectsContainer = document.getElementById('projects-container');
@@ -480,27 +477,50 @@
     const statsContainer = document.getElementById('stats-container');
     const statsSection = document.getElementById('stats-section');
     const avatar = document.getElementById('avatar');
+    const skillsContainer = document.getElementById('skills-container');
 
     // Set current year
     document.getElementById('current-year').textContent = new Date().getFullYear();
 
-    // Set avatar
-    avatar.src = `https://avatars.githubusercontent.com/${GITHUB_USERNAME}`;
-
     // Language to technology mapping
     const languageTechMap = {
-      'python': ['Python', 'Django', 'Flask'],
-      'javascript': ['JavaScript', 'TypeScript', 'Node.js', 'React'],
+      'python': ['Python', 'Django', 'Flask', 'Pandas', 'NumPy', 'SciPy'],
+      'javascript': ['JavaScript', 'Node.js', 'React', 'Vue', 'Angular', 'Express'],
       'typescript': ['TypeScript', 'Node.js'],
-      'java': ['Java', 'Spring Boot'],
-      'go': ['Go'],
+      'java': ['Java', 'Spring Boot', 'Maven', 'JUnit'],
+      'go': ['Go', 'Golang'],
       'rust': ['Rust'],
       'cpp': ['C++'],
       'c': ['C'],
-      'html': ['HTML', 'CSS'],
-      'css': ['CSS'],
-      'shell': ['Bash', 'Shell'],
-      'dockerfile': ['Docker'],
+      'html': ['HTML', 'CSS', 'Frontend'],
+      'css': ['CSS', 'SASS', 'LESS'],
+      'shell': ['Bash', 'Shell', 'Linux'],
+      'dockerfile': ['Docker', 'Containers'],
+      'yaml': ['YAML', 'CI/CD'],
+      'json': ['JSON', 'REST APIs'],
+      'sql': ['SQL', 'Database'],
+      'php': ['PHP', 'Laravel'],
+      'ruby': ['Ruby', 'Ruby on Rails'],
+      'swift': ['Swift', 'iOS'],
+      'kotlin': ['Kotlin', 'Android'],
+      'r': ['R', 'Data Science'],
+      'matlab': ['MATLAB'],
+      'scala': ['Scala', 'Apache Spark'],
+      'haskell': ['Haskell'],
+      'elixir': ['Elixir', 'Phoenix'],
+      'clojure': ['Clojure']
+    };
+
+    // Technology categories
+    const techCategories = {
+      'languages': ['Python', 'JavaScript', 'TypeScript', 'Java', 'Go', 'Rust', 'C++', 'C', 'SQL', 'Bash'],
+      'frontend': ['React', 'Vue', 'Angular', 'HTML', 'CSS', 'SASS', 'Frontend'],
+      'backend': ['Node.js', 'Express', 'Django', 'Flask', 'Spring Boot', 'Ruby on Rails', 'Phoenix'],
+      'databases': ['SQL', 'Database', 'NoSQL', 'MongoDB', 'Redis', 'PostgreSQL', 'MySQL'],
+      'devops': ['Docker', 'Containers', 'Kubernetes', 'CI/CD', 'Linux', 'Bash', 'Shell'],
+      'cloud': ['AWS', 'Azure', 'GCP', 'Cloud', 'Microservices'],
+      'data_science': ['Pandas', 'NumPy', 'SciPy', 'Machine Learning', 'Data Science', 'R', 'MATLAB'],
+      'tools': ['Git', 'Maven', 'JUnit', 'REST APIs', 'YAML', 'JSON']
     };
 
     // Detect project categories based on name, description, and languages
@@ -552,30 +572,39 @@
         }
       });
       
-      return Array.from(techStack).slice(0, 6); // Limit to 6 technologies
+      return Array.from(techStack).slice(0, 6);
     }
 
     // Create project card
     function createProjectCard(repo, languages) {
       const categories = detectCategories(repo, languages);
       const techStack = getTechStack(languages);
+      const isContributed = repo.is_contributed;
       
       return `
         <div class="project" data-categories="${categories.join(',')}">
           <div class="project-header">
-            <div class="project-title">${repo.name}</div>
+            <div class="project-title">
+              ${repo.name}
+              ${isContributed ? '<span class="contribution-badge">Contribution</span>' : ''}
+            </div>
             <div class="project-links">
               ${repo.homepage ? `<a href="${repo.homepage}" class="project-link" target="_blank"><i class="fas fa-external-link-alt"></i> Demo</a>` : ''}
               <a href="${repo.html_url}" class="project-link" target="_blank"><i class="fab fa-github"></i> Code</a>
             </div>
           </div>
-          <p class="project-description">${repo.description || 'No description provided.'}</p>
+          <p class="project-description">
+            ${isContributed ? `<strong>Team Contribution:</strong> ` : ''}
+            ${repo.description || 'No description provided.'}
+          </p>
           <div class="project-tech">
             ${techStack.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
           </div>
           <div class="meta" style="margin-top: 12px;">
-            <small>Updated: ${new Date(repo.updated_at).toLocaleDateString()} | 
-            Stars: ${repo.stargazers_count} | Forks: ${repo.forks_count}</small>
+            <small>
+              ${isContributed ? 'Contributed' : 'Updated'}: ${new Date(repo.updated_at).toLocaleDateString()} 
+              ${!isContributed ? `| Stars: ${repo.stargazers_count} | Forks: ${repo.forks_count}` : ''}
+            </small>
           </div>
         </div>
       `;
@@ -594,20 +623,189 @@
       });
     }
 
+    // Detect skills from repositories
+    function detectSkillsFromRepos(reposWithLanguages) {
+      const skillFrequency = {};
+      const categorySkills = {
+        languages: new Set(),
+        frontend: new Set(),
+        backend: new Set(),
+        databases: new Set(),
+        devops: new Set(),
+        cloud: new Set(),
+        data_science: new Set(),
+        tools: new Set()
+      };
+
+      reposWithLanguages.forEach(({ repo, languages }) => {
+        // Process languages from this repo
+        Object.keys(languages).forEach(lang => {
+          const langLower = lang.toLowerCase();
+          if (languageTechMap[langLower]) {
+            languageTechMap[langLower].forEach(tech => {
+              skillFrequency[tech] = (skillFrequency[tech] || 0) + 1;
+              
+              // Categorize the technology
+              Object.entries(techCategories).forEach(([category, techs]) => {
+                if (techs.includes(tech)) {
+                  categorySkills[category].add(tech);
+                }
+              });
+            });
+          } else {
+            // Add the language itself as a skill
+            skillFrequency[lang] = (skillFrequency[lang] || 0) + 1;
+            categorySkills.languages.add(lang);
+          }
+        });
+
+        // Detect skills from repo name and description
+        const repoText = (repo.name + ' ' + (repo.description || '')).toLowerCase();
+        
+        // Detect frameworks and tools from text
+        const techKeywords = {
+          react: 'React',
+          vue: 'Vue',
+          angular: 'Angular',
+          django: 'Django',
+          flask: 'Flask',
+          spring: 'Spring Boot',
+          express: 'Express',
+          docker: 'Docker',
+          kubernetes: 'Kubernetes',
+          aws: 'AWS',
+          azure: 'Azure',
+          gcp: 'GCP',
+          mongodb: 'MongoDB',
+          redis: 'Redis',
+          postgresql: 'PostgreSQL',
+          mysql: 'MySQL',
+          pandas: 'Pandas',
+          numpy: 'NumPy',
+          tensorflow: 'TensorFlow',
+          pytorch: 'PyTorch',
+          sklearn: 'Scikit-learn',
+          git: 'Git',
+          jenkins: 'Jenkins',
+          terraform: 'Terraform',
+          ansible: 'Ansible'
+        };
+
+        Object.entries(techKeywords).forEach(([keyword, tech]) => {
+          if (repoText.includes(keyword)) {
+            skillFrequency[tech] = (skillFrequency[tech] || 0) + 1;
+            
+            // Categorize
+            Object.entries(techCategories).forEach(([category, techs]) => {
+              if (techs.includes(tech)) {
+                categorySkills[category].add(tech);
+              }
+            });
+          }
+        });
+      });
+
+      return { skillFrequency, categorySkills };
+    }
+
+    // Create skills section HTML
+    function createSkillsSection(skillFrequency, categorySkills) {
+      // Sort skills by frequency (most used first)
+      const sortedSkills = Object.entries(skillFrequency)
+        .sort(([, a], [, b]) => b - a)
+        .slice(0, 50);
+
+      // Get top skills for each category
+      const categoryData = [
+        {
+          name: 'Programming Languages',
+          skills: Array.from(categorySkills.languages).slice(0, 12),
+          icon: 'fas fa-code'
+        },
+        {
+          name: 'Frontend Development',
+          skills: Array.from(categorySkills.frontend).slice(0, 10),
+          icon: 'fas fa-palette'
+        },
+        {
+          name: 'Backend Development',
+          skills: Array.from(categorySkills.backend).slice(0, 10),
+          icon: 'fas fa-server'
+        },
+        {
+          name: 'Databases',
+          skills: Array.from(categorySkills.databases).slice(0, 8),
+          icon: 'fas fa-database'
+        },
+        {
+          name: 'DevOps & Cloud',
+          skills: Array.from(categorySkills.devops).concat(Array.from(categorySkills.cloud)).slice(0, 12),
+          icon: 'fas fa-cloud'
+        },
+        {
+          name: 'Data Science & ML',
+          skills: Array.from(categorySkills.data_science).slice(0, 10),
+          icon: 'fas fa-chart-line'
+        },
+        {
+          name: 'Tools & Platforms',
+          skills: Array.from(categorySkills.tools).slice(0, 10),
+          icon: 'fas fa-tools'
+        }
+      ].filter(category => category.skills.length > 0);
+
+      return `
+        <div class="skills-grid">
+          ${categoryData.map(category => `
+            <div class="skill-category">
+              <h3><i class="${category.icon}"></i> ${category.name}</h3>
+              <div class="skill-tags">
+                ${category.skills.map(skill => {
+                  const frequency = skillFrequency[skill] || 1;
+                  const intensity = Math.min(1, frequency / 3);
+                  const opacity = 0.3 + (intensity * 0.7);
+                  return `<span class="skill-tag" style="background: rgba(56, 189, 248, ${opacity})">${skill}</span>`;
+                }).join('')}
+              </div>
+            </div>
+          `).join('')}
+        </div>
+        
+        <div class="skills-stats">
+          <div class="stat-card">
+            <div class="stat-number">${sortedSkills.length}</div>
+            <div class="stat-label">Technologies Detected</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">${Math.max(...Object.values(skillFrequency))}</div>
+            <div class="stat-label">Most Used Technology</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">${Object.values(skillFrequency).reduce((a, b) => a + b, 0)}</div>
+            <div class="stat-label">Total Technology Usages</div>
+          </div>
+        </div>
+      `;
+    }
+
     // Load projects from GitHub
     async function loadProjects() {
       try {
-        const response = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=100`);
-        const repos = await response.json();
+        // Fetch user's own repositories
+        const ownReposResponse = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=100`);
+        const ownRepos = await ownReposResponse.json();
 
-        if (!Array.isArray(repos)) {
+        // Combine with manual contributed projects
+        const allRepos = [...ownRepos, ...CONTRIBUTED_PROJECTS];
+        
+        if (!Array.isArray(allRepos)) {
           throw new Error('Failed to fetch repositories');
         }
 
         // Get languages for each repo
         const reposWithLanguages = await Promise.all(
-          repos.map(async repo => {
-            if (repo.fork) return null; // Skip forks
+          allRepos.map(async repo => {
+            if (repo.fork && !FEATURED_PROJECTS.includes(repo.name)) return null;
             
             try {
               const langResponse = await fetch(repo.languages_url);
@@ -620,11 +818,9 @@
           })
         );
 
-        // Filter out null values and sort by stars and update date
         const validRepos = reposWithLanguages
           .filter(item => item !== null)
           .sort((a, b) => {
-            // Sort by stars (descending), then by update date (descending)
             if (b.repo.stargazers_count !== a.repo.stargazers_count) {
               return b.repo.stargazers_count - a.repo.stargazers_count;
             }
@@ -635,6 +831,10 @@
         projectsContainer.innerHTML = validRepos
           .map(({ repo, languages }) => createProjectCard(repo, languages))
           .join('');
+
+        // Update skills section
+        const { skillFrequency, categorySkills } = detectSkillsFromRepos(validRepos);
+        skillsContainer.innerHTML = createSkillsSection(skillFrequency, categorySkills);
 
         // Add filter functionality
         const filterButtons = document.querySelectorAll('.filter-btn');
@@ -657,7 +857,36 @@
             Failed to load projects. Please check your GitHub username and try again.
           </div>
         `;
+        
+        skillsContainer.innerHTML = createDefaultSkillsSection();
       }
+    }
+
+    // Fallback default skills section
+    function createDefaultSkillsSection() {
+      return `
+        <div class="skills-grid">
+          <div class="skill-category">
+            <h3><i class="fas fa-code"></i> Programming Languages</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">Java</span>
+              <span class="skill-tag">C</span>
+              <span class="skill-tag">SQL</span>
+            </div>
+          </div>
+          <div class="skill-category">
+            <h3><i class="fas fa-palette"></i> Web Development</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">HTML</span>
+              <span class="skill-tag">CSS</span>
+              <span class="skill-tag">React</span>
+              <span class="skill-tag">Node.js</span>
+            </div>
+          </div>
+        </div>
+      `;
     }
 
     // Load GitHub stats
